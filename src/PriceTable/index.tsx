@@ -2,7 +2,7 @@ import { useState } from "react";
 import type { Plan, PlanId } from "./@type";
 import { motion } from "motion/react";
 import BillSwitcher from "./BillSwitcher";
-import { baseClass, planTheme } from "./theme";
+import { planTheme } from "./theme";
 import Card from "./Card";
 import PlanCustom from "./PlanCustom";
 
@@ -11,6 +11,8 @@ type Props = {
   plans: Record<PlanId, Plan>;
   annualDiscount?: number;
   onSelectPlan: (id: string) => void;
+  darkStyle?: string;
+  lightStyle?: string;
 };
 
 const PriceTable = ({
@@ -18,20 +20,26 @@ const PriceTable = ({
   plans,
   annualDiscount,
   onSelectPlan,
+  darkStyle = "bg-[#292A24] text-white border-white/10",
+  lightStyle = "bg-[#FFFDF6] text-black border-black/10",
 }: Props) => {
   const [annually, setAnnually] = useState(true);
 
   const discount = annually && annualDiscount ? annualDiscount : 0;
+
+  const baseStyle = darkMode ? darkStyle : lightStyle;
   return (
-    <div className={`h-screen overflow-auto ${baseClass(darkMode)}`}>
+    <div
+      className={`h-screen overflow-auto transition-colors text-sm md:text-base ${baseStyle}`}
+    >
       {/* Intro Section */}
       <motion.div
         initial={{ translateY: "100px", opacity: 0 }}
         animate={{ translateY: "0px", opacity: 1 }}
         transition={{ ease: "easeOut" }}
-        className={`p-15 md:p-20 md:pb-0 pb-0 text-center ${baseClass(
-          darkMode
-        )}`}
+        className={`p-15 md:p-20 md:pb-0 pb-0 text-center ${
+          darkMode ? darkStyle : lightStyle
+        }`}
       >
         <h1 className="text-3xl md:text-5xl font-bold">Plans</h1>
         <p className="text-sm md:text-base mt-2">
@@ -44,9 +52,7 @@ const PriceTable = ({
         initial={{ translateY: "100px", opacity: 0 }}
         animate={{ translateY: "0px", opacity: 1 }}
         transition={{ delay: 0.1, ease: "easeOut" }}
-        className={`sticky top-0 z-20 py-2 my-2 text-sm md:text-base backdrop-blur-lg bg-transparent ${baseClass(
-          darkMode
-        )}`}
+        className={`sticky top-0 z-20 py-2 my-2 text-sm md:text-base backdrop-blur-lg bg-transparent ${baseStyle}`}
       >
         <BillSwitcher
           darkMode={darkMode}

@@ -44,10 +44,3 @@ export const planTheme: Record<PlanId, PlanTheme> = {
     },
   },
 };
-
-export const baseClass = (isDark: boolean) =>
-  `transition-colors text-sm md:text-base ${
-    isDark
-      ? "bg-[#292A24] text-white border-white/10"
-      : "bg-[#FFFDF6] text-black border-black/10"
-  }`;
