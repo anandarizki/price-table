@@ -48,6 +48,6 @@ export const plans: Record<PlanId, Plan> = {
     description:
       "Tailored offerings with expert onboarding to meet unique business needs swiftly.",
     disableFeatures: ["f6", "f7", "f8", "f9", "f10", "f11", "f12"],
-    basePrice: 0,
+    basePrice: 10,
   },
 };
