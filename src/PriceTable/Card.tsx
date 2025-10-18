@@ -24,7 +24,7 @@ type CardClassProps = {
   featureListClass?: string;
 };
 
-const PriceContainer = ({
+export const PriceContainer = ({
   annually,
   price,
   annualDiscount = 0,

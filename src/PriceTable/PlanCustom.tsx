@@ -1,6 +1,6 @@
 import { useState } from "react";
 import type { FeatureId, Plan } from "./@type";
-import Card from "./Card";
+import Card, { PriceContainer } from "./Card";
 import type { PlanTheme } from "./theme";
 import { features } from "./data";
 import { Check, Lock, PlusIcon } from "lucide-react";
@@ -13,10 +13,12 @@ function PlanCustom({
   discount,
   data,
   theme,
+  currency = "$",
 }: {
   darkMode: boolean;
   annually: boolean;
   discount: number;
+  currency?: string;
   data: Plan;
   theme: PlanTheme;
 }) {
@@ -49,6 +51,7 @@ function PlanCustom({
       discount={discount}
       darkMode={darkMode}
       startFrom={noSelected}
+      currency={currency}
       {...data}
       {...theme}
       disableFeatures={disabled}
@@ -90,7 +93,18 @@ function PlanCustom({
               ) : (
                 <Check className="w-6 h-6 text-green-600" />
               )}
-              {f.label}
+              <div className="flex flex-1 justify-between gap-5">
+                <span>{f.label}</span>
+                <div className="opacity-50 flex items-center">
+                  <PriceContainer
+                    price={f.price}
+                    annually={annually}
+                    annualDiscount={discount}
+                    currency={currency}
+                    className="text-sm"
+                  />
+                </div>
+              </div>
             </Button>
           );
         })}
