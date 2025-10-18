@@ -28,9 +28,11 @@ A simple and sleek pricing table designed for any type of business — perfect f
 ### Run Locally
 
 1. Clone the repository
-   ```bash
-   git clone https://github.com/anandarizki/price-table
-   ```
+
+```bash
+git clone https://github.com/anandarizki/price-table
+```
+
 2. Install Dependencies
 
 ```bash

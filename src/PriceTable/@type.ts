@@ -15,6 +15,7 @@ export type FeatureId =
 export type PlanId = "basic" | "pro" | "enterprise" | "custom";
 
 export type Plan = {
+  id: PlanId;
   title: string;
   description: string;
   disableFeatures: string[];

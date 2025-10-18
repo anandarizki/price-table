@@ -13,12 +13,17 @@ function App() {
         window.matchMedia("(prefers-color-scheme: dark)").matches
     );
   }, []);
+
+  const handleSelectPlan = (id: string) => {
+    alert(`Mock Event:Subscribed to ${id} plan`);
+  };
   return (
     <>
       <PriceTable
         plans={plans}
         annualDiscount={ANNUAL_DISCOUNT}
         darkMode={darkMode}
+        onSelectPlan={handleSelectPlan}
       />
       <button
         className={`fixed right-0 top-1/2 -translate-y-1/2 p-3 rounded-l-full z-50 cursor-pointer ${

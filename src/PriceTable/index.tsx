@@ -10,9 +10,15 @@ type Props = {
   darkMode?: boolean;
   plans: Record<PlanId, Plan>;
   annualDiscount?: number;
+  onSelectPlan: (id: string) => void;
 };
 
-const PriceTable = ({ darkMode = false, plans, annualDiscount }: Props) => {
+const PriceTable = ({
+  darkMode = false,
+  plans,
+  annualDiscount,
+  onSelectPlan,
+}: Props) => {
   const [annually, setAnnually] = useState(true);
 
   const discount = annually && annualDiscount ? annualDiscount : 0;
@@ -64,6 +70,7 @@ const PriceTable = ({ darkMode = false, plans, annualDiscount }: Props) => {
               annually={annually}
               discount={discount}
               darkMode={darkMode}
+              onSelect={onSelectPlan}
               {...plans.basic}
               {...planTheme.basic}
               className="order-2 lg:flex-1 lg:order-1 rounded-3xl lg:rounded-r-none"
@@ -73,6 +80,7 @@ const PriceTable = ({ darkMode = false, plans, annualDiscount }: Props) => {
               annually={annually}
               discount={discount}
               darkMode={darkMode}
+              onSelect={onSelectPlan}
               {...plans.pro}
               {...planTheme.pro}
               isMain
@@ -87,6 +95,7 @@ const PriceTable = ({ darkMode = false, plans, annualDiscount }: Props) => {
               annually={annually}
               discount={discount}
               darkMode={darkMode}
+              onSelect={onSelectPlan}
               {...plans.enterprise}
               {...planTheme.enterprise}
               className="order-3 lg:flex-1 rounded-3xl lg:rounded-l-none"
@@ -99,6 +108,7 @@ const PriceTable = ({ darkMode = false, plans, annualDiscount }: Props) => {
             discount={discount}
             data={plans.custom}
             theme={planTheme.custom}
+            onSelect={onSelectPlan}
           />
         </div>
       </motion.section>

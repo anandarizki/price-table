@@ -15,6 +15,7 @@ type CardProps = {
   isMain?: boolean;
   startFrom?: boolean;
   currency?: string;
+  onSelect: (id: string) => void;
 };
 
 type CardClassProps = {
@@ -91,6 +92,7 @@ const Card = ({
   Icon,
   color,
   currency = "$",
+  onSelect,
 }: CardProps & Plan & CardClassProps & PlanTheme) => {
   const totalPrice = features
     .filter((feature) => !disableFeatures.includes(feature.id))
@@ -210,7 +212,7 @@ const Card = ({
           </div>
           <div className="p-4 relative z-10">
             <Button
-              onClick={() => alert(`Subscribed to ${title} plan`)}
+              onClick={() => onSelect(title)}
               className={`w-full flex items-center justify-center p-4 rounded-xl ${
                 isMain ? "bg-black" : color.bg
               } text-white`}

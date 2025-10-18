@@ -19,6 +19,7 @@ export const features: Feature[] = [
 
 export const plans: Record<PlanId, Plan> = {
   basic: {
+    id: "basic",
     title: "Basic",
     description:
       "Core tools with reliability, performance, and essential support.",
@@ -26,6 +27,7 @@ export const plans: Record<PlanId, Plan> = {
     basePrice: 7,
   },
   pro: {
+    id: "pro",
     title: "Pro",
     description:
       "Advanced tools for growing teams, offering collaboration, analytics, integrations, and support.",
@@ -33,6 +35,7 @@ export const plans: Record<PlanId, Plan> = {
     basePrice: 4,
   },
   enterprise: {
+    id: "enterprise",
     title: "Enterprise",
     description:
       "Scalable solution with security, compliance, and priority support.",
@@ -40,6 +43,7 @@ export const plans: Record<PlanId, Plan> = {
     basePrice: 3,
   },
   custom: {
+    id: "custom",
     title: "Custom",
     description:
       "Tailored offerings with expert onboarding to meet unique business needs swiftly.",

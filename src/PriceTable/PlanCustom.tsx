@@ -14,6 +14,7 @@ function PlanCustom({
   data,
   theme,
   currency = "$",
+  onSelect,
 }: {
   darkMode: boolean;
   annually: boolean;
@@ -21,6 +22,7 @@ function PlanCustom({
   currency?: string;
   data: Plan;
   theme: PlanTheme;
+  onSelect: (id: string) => void;
 }) {
   const [disabled, setDisabled] = useState<FeatureId[]>(
     features.filter((f) => data.disableFeatures.includes(f.id)).map((p) => p.id)
@@ -52,6 +54,7 @@ function PlanCustom({
       darkMode={darkMode}
       startFrom={noSelected}
       currency={currency}
+      onSelect={onSelect}
       {...data}
       {...theme}
       disableFeatures={disabled}
@@ -113,10 +116,10 @@ function PlanCustom({
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          className="relative z-10 px-4 sm:px-6 mt-6 lg:px-20 lg:pt-0 flex flex-col sm:flex-row-reverse gap-2"
+          className="relative z-10 px-4 sm:px-6 mt-6 xl:px-20 lg:pt-0 flex flex-col sm:flex-row-reverse gap-2"
         >
           <Button
-            onClick={() => alert(`Subscribed to ${data.title} plan`)}
+            onClick={() => onSelect(data.title)}
             className={`p-4 rounded-xl w-full sm:max-w-xs ${theme.color.bg} text-white`}
           >
             Subscribe {data.title} Plan
